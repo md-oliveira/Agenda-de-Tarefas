@@ -1,6 +1,8 @@
 <?php
+    
+    namespace app\model;
     class Tarefa{
-        private $titulo,$descricao, $status;
+        private $titulo,$descricao,$id;
     
         public function getDescricao(){
             return $this->descricao;
@@ -11,15 +13,25 @@
         }
 
 
-        public function getStatus(){
-            return $this->status;
+        public function getTitulo(){
+            return $this->titulo;
         }
             
-        public function setStatus($status){
-            $this->status = $status;
+        public function setTitulo($titulo){
+            $this->titulo = $titulo;
         }
         
-    
+        public function getId(){
+            return $this->id;
+        }
+            
+        public function setId($id){
+            $this->id = $id;
+        }
+
+
+
+
     }
 
 

@@ -1,24 +1,34 @@
 <?php
     require_once 'vendor/autoload.php';
     
-    if($_SERVER["METHOD_REQUEST"] = "POST" ){
-        $titulo = htmlspecialchars('_titulo');
-        $descricao = htmlspecialchars('_descricao');
+    use app\model\Tarefa;
+    use app\model\TarefaDao;
     
-        //echo $titulo, $descricao;
-    
+    if($_SERVER["REQUEST_METHOD"] = "POST" ){
+        
+        
+            
+        $titulo = htmlspecialchars($_POST['_titulo']);
+        $descricao = htmlspecialchars($_POST['_descricao']);
+        
+            //echo $titulo, $descricao;
+        
         $tarefa = new Tarefa();
-        $tarefa ->getDescricao($titulo);
-    
-    
+        $tarefa->setDescricao($descricao);
+        $tarefa ->setTitulo($titulo);
+
+        $tarefaDao = new TarefaDao();
+        $tarefaDao->insert($tarefa);
+        
+
+        /* if($descricao  != null);{
+            echo"sucesso";
+        }
+        if($descricao  = null);{
+            echo"ERRO";
+        }*/
     
     }
-
-
-
-    
-
-
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +53,11 @@
         <br>
         <input type="submit">
     </form>
+    <br>
+    <br>
+    <br>
 
+    <a href="listarTarefa.php">Lista de Tarefas</a>
 
 
 </body>
