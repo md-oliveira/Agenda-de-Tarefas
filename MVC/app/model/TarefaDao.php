@@ -21,11 +21,13 @@
                     $stmt->execute();
                     
                     echo"<script>alert('Cadastro Concluido')</script>;";
+                    header("Location: index.php");
+                    exit();
                     
                     //echo "<meta http-equiv='refresh' content='1;url=index.php'>";
                    
                 }else{
-                    echo"<script>alert('Não foi Possivel inserir')</script>;";
+                    //echo"<script>alert('Não foi Possivel inserir')</script>;";
                 
                 }
 
@@ -77,6 +79,21 @@
                 print($e);
                 echo"<script>alert('Erro')</script>;";
             
+            }
+        }
+
+        public function DeleteConsulta(Tarefa $t){
+            try{
+                $id = $t->getId();
+
+                $sql = "DELETE FROM task WHERE id = :id ";
+                $stmt = Conexao::getConn()->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+
+            }catch(Exception $e){
+                print($e);
+                echo"<script>alert('Erro')</script>;";
             }
         }
     
